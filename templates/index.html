@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>All Events</h1>
+    <div class="wrapper">
+        <ul>
+            {% for event in events %}
+                <br>
+                {{ event.date }}: <b>{{ event.event_name }}</b> 
+                <br> 
+                {{ event.description }} 
+                {% if event.recurring %}
+                <span>&#8635;</span>   
+               {% else %}
+                <span>&#9843;</span>
+                
+               {% endif %}
+               <br>
+            
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="input-form">
+            <form action="/events" method="post">
+                <label for="input-date">Date</label>
+                <br>
+                <input type="date" name="date" id="input-date">
+                <br>
+                <label for="input-name">Event Name</label>
+                <br>
+                <input type="text" id="input-name" name="name">
+                <br>
+                <label for="input-num_guest">Number of Guests</label>
+                <br>
+                <input type="number" id="input-num_guest" name="num_guest">
+                <br>
+                <label for="input-room">Room Name</label>
+                <br>
+                <input type="text" id="input-room" name="room">
+                <br>
+                <label for="input-description">Event Description</label>
+                <br>
+                <textarea name="description" id="input-description" cols="30" rows="10"></textarea>
+                <br>
+                <button type="submit">Add Event</button>
+            </form>
+
+        </div>
+
+    </div>    
+{% endblock  %}
