@@ -41,10 +41,26 @@
                 <br>
                 <textarea name="description" id="input-description" cols="30" rows="10"></textarea>
                 <br>
+                <label for="input-recurring">Recurring Event?</label>
+                <br>
+                <select name="recurring" id="input-recurring">
+
+                    <option value=True >Yes</option>
+                    <option value="" >No</option>
+                </select>
+                <br>
                 <button type="submit">Add Event</button>
+                <br>
+                <br>
             </form>
-
+            <form action="/events/delete" method="POST">
+                <button type="submit">Delete Event</button>
+                <select name="delete_event" id="delete">
+                {% for event in events %}
+                    <option value="{{ event.event_name }}" SELECTED>{{ event.event_name }}</option>
+                {% endfor %}
+                </select>
+            </form>
         </div>
-
     </div>    
 {% endblock  %}

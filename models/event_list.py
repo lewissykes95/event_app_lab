@@ -10,3 +10,8 @@ events = [event1, event2, event3]
 
 def add_new_event(event):
     events.append(event)
+
+def del_event(event_name):
+    for event in events:
+        if event_name == event.event_name: 
+            events.remove(event)
